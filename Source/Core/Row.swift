@@ -86,15 +86,22 @@ open class RowOf<T>: BaseRow where T: Equatable {
 
     @discardableResult
     open override func validate(quietly: Bool = false) -> [ValidationError] {
+        if isOptional && baseValue == nil {
+            return []
+        }
+
         var vErrors = [ValidationError]()
+
         #if swift(>=4.1)
         vErrors = rules.compactMap { $0.validateFn(value) }
         #else
         vErrors = rules.flatMap { $0.validateFn(value) }
         #endif
+
         if (!quietly) {
             validationErrors = vErrors
         }
+
         return vErrors
     }
     

@@ -53,6 +53,7 @@ open class BaseRow: BaseRowType {
     public internal(set) var wasBlurred = false
     public internal(set) var wasChanged = false
 
+    public var isOptional: Bool = false
     public var isValid: Bool { return validationErrors.isEmpty }
     public var isHighlighted: Bool = false
 

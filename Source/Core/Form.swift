@@ -391,7 +391,6 @@ extension Form {
 }
 
 extension Form {
-
     @discardableResult
     public func validate(includeHidden: Bool = false, includeDisabled: Bool = true, quietly: Bool = false) -> [ValidationError] {
         let rowsWithHiddenFilter = includeHidden ? allRows : rows
