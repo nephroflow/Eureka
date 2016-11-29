@@ -422,6 +422,7 @@ extension Section /* Condition */ {
 
     func hide(row: BaseRow) {
         row.baseCell.cellResignFirstResponder()
+        row.callbackRowWillHide?()
         (row as? BaseInlineRowType)?.collapseInlineRow()
         kvoWrapper.rows.remove(row)
     }

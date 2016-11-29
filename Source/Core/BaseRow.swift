@@ -35,6 +35,8 @@ open class BaseRow: BaseRowType {
     var callbackOnCollapseInlineRow: Any?
     var callbackOnCellHighlightChanged: (() -> Void)?
     var callbackOnRowValidationChanged: (() -> Void)?
+    var callbackRowWillHide: (() -> Void)?
+
     var _inlineRow: BaseRow?
 
     var _cachedOptionsData: Any?

@@ -255,4 +255,15 @@ extension RowType where Self: BaseRow {
         callbackOnRowValidationChanged = { [weak self] in  callback(self!.cell, self!) }
         return self
     }
+
+    /**
+     Sets a block to be called when the row is about the get hidden.
+
+     - returns: this row
+     */
+    @discardableResult
+    public func onRowWillHide(_ callback: @escaping (_ cell: Cell, _ row: Self) -> ()) -> Self {
+        callbackRowWillHide = { [unowned self] in callback(self.cell, self) }
+        return self
+    }
 }
