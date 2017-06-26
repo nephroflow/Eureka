@@ -738,6 +738,10 @@ open class FormViewController: UIViewController, FormViewControllerProtocol, For
         tableView?.endUpdates()
     }
 
+    open func extraDictionaryValuesToEvaluatePredicate(tagToValues: [String: Any]) -> [String: Any] {
+        return [:]
+    }
+
     // MARK: Private
 
     var oldBottomInset: CGFloat?
@@ -997,7 +1001,6 @@ extension FormViewController : UITableViewDataSource {
         return 0
     }
 }
-
 
 extension FormViewController : UIScrollViewDelegate {
 
