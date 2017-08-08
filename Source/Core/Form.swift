@@ -324,7 +324,7 @@ extension Form {
         }
     }
 
-    func dictionaryValuesToEvaluatePredicate() -> [String: Any] {
+    public func dictionaryValuesToEvaluatePredicate() -> [String: Any] {
         return merge(tagToValues, delegate?.extraDictionaryValuesToEvaluatePredicate(tagToValues: tagToValues) ?? [:])
     }
 
