@@ -254,20 +254,6 @@ extension Form : RangeReplaceableCollection {
 
 }
 
-/// Merge dictionaries together, later dictionaries overiding earlier values of keys.
-///
-/// - parameter dictionaries: The dictionaries to source from.
-/// - returns: Merged dictionary with all of its keys and values.
-func merge<T, U>(_ dictionaries: [T: U]...) -> [T: U] {
-  var result = [T: U]()
-  for dict in dictionaries {
-    for (key, value) in dict {
-      result[key] = value
-    }
-  }
-  return result
-}
-
 extension Form {
 
     // MARK: Private Helpers
@@ -325,7 +311,7 @@ extension Form {
     }
 
     public func dictionaryValuesToEvaluatePredicate() -> [String: Any] {
-        return merge(tagToValues, delegate?.extraDictionaryValuesToEvaluatePredicate(tagToValues: tagToValues) ?? [:])
+      return tagToValues.merging(delegate?.extraDictionaryValuesToEvaluatePredicate(tagToValues: tagToValues) ?? [:], uniquingKeysWith: { (_, new) in new })
     }
 
     func addRowObservers(to taggable: Taggable, rowTags: [String], type: ConditionType) {
