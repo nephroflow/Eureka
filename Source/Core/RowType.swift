@@ -262,8 +262,8 @@ extension RowType where Self: BaseRow {
      - returns: this row
      */
     @discardableResult
-    public func onRowWillHide(_ callback: @escaping (_ cell: Cell, _ row: Self) -> ()) -> Self {
-        callbackRowWillHide = { [unowned self] in callback(self.cell, self) }
+    public func onRowWillHide(_ callback: @escaping (_ cell: Cell, _ row: Self) -> Void) -> Self {
+        callbackRowWillHide = { [weak self] in callback(self!.cell, self!) }
         return self
     }
 }
